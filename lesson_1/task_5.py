@@ -23,8 +23,8 @@ res = total_sum(start_sum, month)
 def quantity(val, percent):
     try:
         res = start_sum / 100.0 * percent / 12
-        item = val / (month - 2) * res / 100
-        result = res * month + item * month + start_sum + val
+        item = val / (month - 2) / 100.0 * res / 12
+        result = res * month + item + start_sum + val
         print(f'Итоговая сумма через {month}', 'месяцев составит {:.2f} рублей'.format(result))
     except TypeError:
         print('Некорректные данные')
