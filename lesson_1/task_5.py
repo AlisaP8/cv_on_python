@@ -10,7 +10,7 @@ def get_summ(start_sum, month, quan):
         return res
 
     while True:
-        for i in range(month):
+        for i in range(month - 1):
             i *= quan
         break
     return i
@@ -23,15 +23,11 @@ res = total_sum(start_sum, month)
 def quantity(val, percent):
     try:
         res = start_sum / 100.0 * percent / 12
-        item = res * val
-        result = res * month + val * item + start_sum
+        item = val / (month - 2) * res / 100
+        result = res * month + item * month + start_sum + val
         print(f'Итоговая сумма через {month}', 'месяцев составит {:.2f} рублей'.format(result))
-        # return result
     except TypeError:
-        # pass
         print('Некорректные данные')
 
 
-# quantity(summ_quan, res)
-
-print(quantity(summ_quan, res))
+quantity(summ_quan, res)
