@@ -1,4 +1,6 @@
 import os
+import random
+import string
 
 
 def get_file():
@@ -7,12 +9,15 @@ def get_file():
         print('Файл уже существует')
     else:
         with open('test.txt', 'a+', encoding='utf-8') as f:
-            lines1 = ['first', 'second', 'third']
-            lines2 = [1, 2, 3]
-            # f.writelines("%s\n" % line for line in (lines1, lines2))
-            n = zip(lines1, lines2)
-            # print(n)
-            for el in n:
+            # list1 = ['first', 'second', 'third']
+            # list1 = ''.join(list(map(chr, [random.randint(65, 90) for _ in range(30)])))
+            list1 = set()
+            while len(list1) < 5:
+                list1.add(''.join(random.choice(string.ascii_lowercase) for _ in range(3, 10)))
+            # list2 = [1, 2, 3]
+            list2 = [random.randint(0, 10000) for _ in range(10)]
+            file = zip(list1, list2)
+            for el in file:
                 f.write(f'{el[0]}{el[1]}\n')
             f.close()
         return
@@ -29,4 +34,3 @@ def call_det_name():
 
 get_file()
 call_det_name()
-
